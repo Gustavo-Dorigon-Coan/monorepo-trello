@@ -1,7 +1,7 @@
 CREATE TABLE card(
   id int(6) AUTO_INCREMENT,
-  titulo varchar(250) NOT NULL,
-  descricacao varchar(250) NOT NULL,
+  title varchar(250) NOT NULL,
+  description varchar(250) NOT NULL,
   list_id int(6),
   isdone boolean DEFAULT false,
   PRIMARY KEY(id)
