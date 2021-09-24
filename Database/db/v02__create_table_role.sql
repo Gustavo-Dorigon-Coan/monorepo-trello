@@ -1,0 +1,5 @@
+CREATE TABLE role(
+  id int(6) AUTO_INCREMENT,
+  name VARCHAR(255) NOT NULL,
+  PRIMARY KEY(id)
+);
