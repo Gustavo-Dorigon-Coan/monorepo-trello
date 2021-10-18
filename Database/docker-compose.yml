@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  oracle:
+    ports:
+      - "3306:3306"
+    image: "mysql:5.7"
+    environment:
+      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_DATABASE: "TrelloDB"
+      MYSQL_USER: "admin"
+      MYSQL_PASSWORD: "admin"
