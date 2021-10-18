@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b759003f-a9d4-401b-961c-4d0396178af0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Database/db/v01__create_table_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v01__create_table_user.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v02__create_table_role.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v02__create_table_role.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v03__create_table_user_role_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v03__create_table_user_role_and_foreignkey.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v04__create_table_project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v04__create_table_project.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v05__create_table_user_project_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v05__create_table_user_project_and_foreignkey.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v06__create_table_list_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v06__create_table_list_and_foreignkey.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Database/db/v07__create_table_card_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v07__create_table_card_and_foreignkey.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/helloworld.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1wTPIf2xdjEprkHDK0yO2Lq7J6c" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backend" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/src/main/resources/db/migration" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Shell Script.mvnw">
+    <configuration name="helloworld.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/helloworld.js" working-dir="$PROJECT_DIR$">
+      <method v="2" />
+    </configuration>
+    <configuration name="mvnw" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/backend/mvnw" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <configuration name="Database: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="Database/docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.Database: Compose Deployment" />
+      <item itemvalue="Node.js.helloworld.js" />
+      <item itemvalue="Shell Script.mvnw" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.mvnw" />
+        <item itemvalue="Docker.Database: Compose Deployment" />
+        <item itemvalue="Node.js.helloworld.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b759003f-a9d4-401b-961c-4d0396178af0" name="Changes" comment="" />
+      <created>1628479527569</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1628479527569</updated>
+      <workItem from="1628479529320" duration="913000" />
+      <workItem from="1628731473168" duration="1057000" />
+      <workItem from="1629297020511" duration="80000" />
+      <workItem from="1629764403412" duration="605000" />
+      <workItem from="1629912892963" duration="11000" />
+      <workItem from="1633386426168" duration="1106000" />
+      <workItem from="1633436144870" duration="87000" />
+      <workItem from="1634594744119" duration="1865000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
