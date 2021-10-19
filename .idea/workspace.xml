@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b759003f-a9d4-401b-961c-4d0396178af0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Database/db/v01__create_table_user.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v01__create_table_user.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v02__create_table_role.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v02__create_table_role.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v03__create_table_user_role_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v03__create_table_user_role_and_foreignkey.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v04__create_table_project.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v04__create_table_project.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v05__create_table_user_project_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v05__create_table_user_project_and_foreignkey.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v06__create_table_list_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v06__create_table_list_and_foreignkey.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Database/db/v07__create_table_card_and_foreignkey.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/db/migration/v07__create_table_card_and_foreignkey.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/helloworld.js" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +19,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="NEW_TOOLWINDOW_STRIPE_DEFAULTS" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -95,6 +90,7 @@
       <workItem from="1633386426168" duration="1106000" />
       <workItem from="1633436144870" duration="87000" />
       <workItem from="1634594744119" duration="1865000" />
+      <workItem from="1634598341034" duration="2228000" />
     </task>
     <servers />
   </component>
