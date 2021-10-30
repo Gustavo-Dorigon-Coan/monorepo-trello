@@ -4,6 +4,7 @@ backend/*.iml
 backend/*.ipr
 backend/*.iws
 backend/*.jar
+backend/*.class
 backend/*.sw?
 backend/*~
 backend/.#*
