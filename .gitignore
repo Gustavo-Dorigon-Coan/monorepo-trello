@@ -37,7 +37,7 @@ backend/lib/
 backend/manifest.yml
 backend/out
 backend/overridedb.*
-backend/target
+backend/target/
 backend/.flattened-pom.xml
 backend/secrets.yml
 backend/.gradletasknamecache
