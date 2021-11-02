@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Entity(name = "project")
 @Table(name = "project")
+@JsonIgnoreProperties(value = {"listOfCards","users"},allowSetters = true)
 public class Project {
 
     @Id
@@ -20,8 +21,7 @@ public class Project {
     private String name;
 
     @OneToMany(mappedBy = "project")
-    @JsonIgnoreProperties(value = {"project"},allowSetters = true)
-    private List<ListOfCards> listOfTasks;
+    private List<ListOfCards> listOfCards;
 
     @ManyToMany
     @JoinTable(
@@ -46,12 +46,12 @@ public class Project {
         this.name = name;
     }
 
-    public List<ListOfCards> getListOfTasks() {
-        return listOfTasks;
+    public List<ListOfCards> getListOfCards() {
+        return listOfCards;
     }
 
-    public void setListOfTasks(List<ListOfCards> listOfTasks) {
-        this.listOfTasks = listOfTasks;
+    public void setListOfCards(List<ListOfCards> listOfCards) {
+        this.listOfCards = listOfCards;
     }
 
     public List<User> getUsers() {
