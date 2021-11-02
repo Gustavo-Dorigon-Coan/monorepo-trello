@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import {Button, Modal} from "@mui/material";
-import {Background, Danger} from "../../constants/Color";
+import {COLORS} from "../../constants/Color";
 import CloseIcon from '@mui/icons-material/Close';
 
 const ContainerModal = styled.div`
   min-width: ${({width}) => width ? width : '700px'};
   min-height: ${({height}) => height ? height : 'auto'};
-  background-color: ${Background};
+  background-color: ${COLORS.Background};
   position: absolute;
   top: 50%;
   left: 50%;

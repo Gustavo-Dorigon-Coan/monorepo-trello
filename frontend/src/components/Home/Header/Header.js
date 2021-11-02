@@ -1,7 +1,7 @@
 import {Container, Grid} from "@mui/material";
 import {Title} from "../../../common/components/Title/Title";
 import { AppTitle } from "../../../common/constants/Constants";
-import {NewProject} from "../NewProject/NewProject";
+import {NewProject} from "../../../common/components/NewProject/NewProject";
 import {ButtonStyled} from "../../../common/components/Button/Button";
 import {useState} from "react";
 
@@ -14,10 +14,7 @@ export const Header = () => {
             <Title>{AppTitle}</Title>
          </Grid>
          <Grid item lg={2}>
-            <ButtonStyled onClick={() => {
-               setOpenModalProject(true);
-               console.log('Pietro','|Teste');
-            }}>Novo Projeto</ButtonStyled>
+            <ButtonStyled onClick={() => setOpenModalProject(true)}>Novo Projeto</ButtonStyled>
          </Grid>
       </Grid>
       <NewProject open={openModalProject} setOpen={setOpenModalProject}/>
