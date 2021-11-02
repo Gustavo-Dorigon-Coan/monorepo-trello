@@ -1,5 +1,6 @@
 package com.unibave.monorepotrello.model;
 
+import com.unibave.monorepotrello.enums.ERole;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
@@ -14,8 +15,9 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
-    private String name;
+    @Enumerated(EnumType.STRING)
+    @Column(length = 20)
+    private ERole name;
 
     @ManyToMany
     @JoinTable(
@@ -36,11 +38,11 @@ public class Role {
         this.id = id;
     }
 
-    public String getName() {
+    public ERole getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(ERole name) {
         this.name = name;
     }
 
