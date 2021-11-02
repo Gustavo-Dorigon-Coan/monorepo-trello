@@ -28,6 +28,10 @@ public class ProjectService {
         projectRepository.deleteById(id);
     }
 
+    public List<Project>findByUserId(Long id){
+        return projectRepository.findByUsersId(id);
+    }
+
     public void update(Long id, Project project) {
         project.setId(id);
         projectRepository.save(project);
