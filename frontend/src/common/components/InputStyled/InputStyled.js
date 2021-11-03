@@ -39,12 +39,12 @@ const handleInput = (event, setObject, object, setErrors, errors, required, vali
   }
 }
 
-const InputStyled = ({children, name, setObject, object, setErrors, errors, required = true, validation = () => true, type = 'text', ...props}) => {
+const InputStyled = ({children, name, setObject, object, setErrors, errors, required = true, validation = () => true, wasSubmitted, type = 'text', ...props}) => {
   const [ noChangeRequired, setNoChangeRequired] = useState(false);
 
   useEffect(() => {
-    required && setErrors({...errors, [name]: true});
-  }, []);
+    wasSubmitted && setNoChangeRequired(true);
+  },[wasSubmitted]);
 
   return <Input
       error={noChangeRequired && Boolean(errors) && Boolean(errors[name])}

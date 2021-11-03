@@ -1,5 +1,5 @@
 import {Grid} from "@mui/material";
-import {InputStyled} from "../Input/Input";
+import {InputStyled} from "../InputStyled/InputStyled";
 import {ButtonStyled} from "../Button/Button";
 import {SubTitle} from "../SubTitle/SubTitle";
 import {ModalStyled} from "../ModalStyled/ModalStyled";
@@ -11,11 +11,13 @@ import {AlertStyled} from "../AlertStyled/AlertStyled";
 import {HttpStatus} from "../../constants/HttpStatus";
 
 export const NewProject = ({open, setOpen}) => {
-  const [ errors, setErrors] = useState();
+  const [ errors, setErrors] = useState({name: true});
+  const [ wasSubmitted, setWasSubmitted] = useState(false);
   const [ project, setProject] = useState({users: [{id: AuthService.getUser().id}]});
   const [ alert, setAlert] = useState({open: false});
 
   const save = async () => {
+    setWasSubmitted(true);
     if (verifyErrors(errors)) {
       const response = await ProjectService.save(project);
       if (HttpStatus.isOkRange(response?.status)) {
@@ -43,7 +45,7 @@ export const NewProject = ({open, setOpen}) => {
                 setObject={setProject}
                 object={project}
                 name={'name'}
-                {...{errors, setErrors}}
+                {...{errors, setErrors, wasSubmitted}}
               >Nome do Projeto</InputStyled>
             </Grid>
             <Grid container item lg={12}>

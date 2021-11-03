@@ -1,6 +1,6 @@
 import {ModalStyled} from "../../common/components/ModalStyled/ModalStyled";
 import {Grid} from "@mui/material";
-import {InputStyled} from "../../common/components/Input/Input";
+import {InputStyled} from "../../common/components/InputStyled/InputStyled";
 import {ButtonStyled} from "../../common/components/Button/Button";
 import {SubTitle} from "../../common/components/SubTitle/SubTitle";
 import React, {useState} from "react";
@@ -11,12 +11,14 @@ import {useHistory} from "react-router-dom";
 import {AlertStyled} from "../../common/components/AlertStyled/AlertStyled";
 
 export const Login = () => {
-  const [ errors, setErrors] = useState();
+  const [ errors, setErrors] = useState({password: true, username: true});
+  const [ wasSubmitted, setWasSubmitted] = useState(false);
   const [ user, setUser] = useState();
   const [ alert, setAlert] = useState({open: false});
   const history = useHistory();
 
   const sign = async () => {
+    setWasSubmitted(true);
     if (verifyErrors(errors)) {
       const response = await AuthService.sign(user);
       if (HttpStatus.isOkRange(response?.status)) {
@@ -42,7 +44,7 @@ export const Login = () => {
               setObject={setUser}
               object={user}
               name={'username'}
-              {...{errors, setErrors}}
+              {...{errors, setErrors, wasSubmitted}}
           >Nome</InputStyled>
         </Grid>
         <Grid item lg={12}>
@@ -52,7 +54,7 @@ export const Login = () => {
               name={'password'}
               type={'password'}
               validation={value => value.length >= 8}
-              {...{errors, setErrors}}
+              {...{errors, setErrors, wasSubmitted}}
           >Senha</InputStyled>
         </Grid>
         <Grid item lg={8}>
