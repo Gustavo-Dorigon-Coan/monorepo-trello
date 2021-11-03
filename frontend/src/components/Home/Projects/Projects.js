@@ -4,20 +4,21 @@ import {ProjectService} from "../../../common/services/ProjectService";
 import {HttpStatus} from "../../../common/constants/HttpStatus";
 import {CardProject} from "../../../common/components/CardProject/CardProject";
 import {SubTitle} from "../../../common/components/SubTitle/SubTitle";
+import {AuthService} from "../../../common/services/AuthService";
 
-export const Projects = () => {
+export const Projects = ({reloadObserver}) => {
   const [projects, setProjects] = useState();
 
   const loadProjects = async () => {
-    const response = await ProjectService.findByUserId(1);
-    if (HttpStatus.isOkRange(response.status)) {
+    const response = await ProjectService.findByUserId(AuthService.getUser().id);
+    if (HttpStatus.isOkRange(response?.status)) {
       setProjects(response.data);
     }
   };
 
   useEffect(() => {
     loadProjects();
-  }, []);
+  }, [reloadObserver]);
 
   return Boolean(projects) && (
     <Container>

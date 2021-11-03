@@ -6,6 +6,7 @@ import com.unibave.monorepotrello.payload.request.SignupRequest;
 import com.unibave.monorepotrello.payload.response.JwtResponse;
 import com.unibave.monorepotrello.payload.response.MessageResponse;
 import com.unibave.monorepotrello.service.AuthService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,6 +18,11 @@ public class AuthController {
 
   public AuthController(AuthService authService) {
     this.authService = authService;
+  }
+
+  @PostMapping(value = "/validate-token", consumes = MediaType.TEXT_PLAIN_VALUE)
+  public boolean authenticateUser(@RequestBody String token) {
+    return authService.validateJwtToken(token);
   }
 
   @PostMapping("/sign")

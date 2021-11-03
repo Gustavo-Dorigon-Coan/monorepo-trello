@@ -4,5 +4,6 @@ export const COLORS = {
   ContrastLight: '#a1a1a1',
   BackgroundIten: '#2a2f32',
   Background: '#1b1e1f',
+  Blue: '#71dee4',
   Danger: '#da0321',
 };

@@ -3,7 +3,6 @@ package com.unibave.monorepotrello.security;
 import com.unibave.monorepotrello.service.LoggerService;
 import com.unibave.monorepotrello.service.UserDetailsProvider;
 import io.jsonwebtoken.*;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 

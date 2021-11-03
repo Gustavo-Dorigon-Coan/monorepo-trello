@@ -65,7 +65,7 @@ public class AuthService {
     if (existsUser(signUpRequest)) {
       return ResponseEntity
           .badRequest()
-          .body(new MessageResponse("Error: O nome/email já esta em uso!"));
+          .body(new MessageResponse("O nome/email já esta em uso!"));
     };
 
     User user = new User(signUpRequest.getUsername(), signUpRequest.getEmail(),
@@ -97,12 +97,16 @@ public class AuthService {
 
   private Role verifyRole(ERole roleUser) {
     return roleRepository.findByName(roleUser)
-        .orElseThrow(() -> new RuntimeException("Error: A função não foi encontrada!"));
+        .orElseThrow(() -> new RuntimeException("A função não foi encontrada!"));
   }
 
   private boolean existsUser(SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) return true;
     return userRepository.existsByEmail(signUpRequest.getEmail());
+  }
+
+  public boolean validateJwtToken(String token) {
+    return jwtUtils.validateJwtToken(token);
   }
 
 }

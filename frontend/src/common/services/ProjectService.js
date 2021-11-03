@@ -6,7 +6,7 @@ class ProjectService {
   };
 
   save = project => {
-    return request.save(`/projects`, project);
+    return request.post(`/projects`, project);
   };
 }
 

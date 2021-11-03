@@ -1,24 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import {Route, Router, Switch} from "react-router-dom";
-import {HomePage} from "./pages/HomePage/HomePage";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 import { createBrowserHistory } from "history";
 import {ThemeProvider} from '@mui/material/styles';
 import {theme} from "./common/utils/theme";
+import {Login} from "./components/Login/Login";
+import {Home} from "./components/Home/Home";
+import {NewAccount} from "./components/NewAccount/Login";
 
-const customHistory = createBrowserHistory();
+export const history = createBrowserHistory();
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Router history={customHistory}>
-          <Switch>
-              <Route path="/">
-                  <HomePage />
-              </Route>
-          </Switch>
-      </Router>
+      <BrowserRouter history={history}>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/new-account" component={NewAccount} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

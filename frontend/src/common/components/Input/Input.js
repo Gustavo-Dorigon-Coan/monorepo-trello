@@ -6,7 +6,6 @@ const Input = styled(TextField)`
   color: ${COLORS.Light};
   background: ${COLORS.BackgroundIten};
   width: 100%;
-  padding: 6px;
   border-radius: 6px;
 
   .css-ume8vi-MuiInputBase-input-MuiInput-input {
@@ -24,9 +23,28 @@ const Input = styled(TextField)`
   }
 `;
 
+const handleInput = (event, setObject, object, setErrors, errors, required, validation) => {
+  setErrors({...errors, [event.target.name]: false});
+  const value = event.target.value
+  setObject({...object, [event.target.name]: value});
+  if (required) {
+    if (value.length <= 0) {
+      setErrors({...errors, [event.target.name]: true});
+    }
+    if (!validation(value)) {
+      setErrors({...errors, [event.target.name]: true});
+    }
+  }
+}
 
-const InputStyled = ({label, ...props}) => {
-  return <Input label={label} {...props}/>
+const InputStyled = ({children, name, setObject, object, setErrors, errors, required = true, validation = () => true, type = 'text', ...props}) => {
+  return <Input
+      error={Boolean(errors) && Boolean(errors[name]) && errors[name]}
+      onChange={event => handleInput(event, setObject, object, setErrors, errors, required, validation)}
+      name={name}
+      type={type}
+      label={children}
+      {...props}/>
 }
 
 export {InputStyled};

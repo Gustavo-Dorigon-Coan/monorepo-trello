@@ -5,17 +5,22 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const ContainerModal = styled.div`
   min-width: ${({width}) => width ? width : '700px'};
-  min-height: ${({height}) => height ? height : 'auto'};
+  width: ${({width}) => width ? width : 'auto'};
+  min-height: ${({height}) => height ? height : '35px'};
   background-color: ${COLORS.Background};
   position: absolute;
   top: 50%;
   left: 50%;
-  padding: 16px;
   transform: translate(-50%, -50%);
-  border: 2px solid #000;
-  border-radius: 16px;
+  border: 1px solid ${COLORS.ContrastLight};
+  border-radius: 8px;
   boxShadow: 24;
 `
+
+const ContainerChildren = styled.div`
+  margin: 16px;
+`
+
 const ButtonContainer = styled.div`
   position: absolute;
   top: 16px;
@@ -25,12 +30,14 @@ const ButtonContainer = styled.div`
 export const ModalStyled = ({width, children, open = false, closeButton, ...props}) => {
   return <Modal {...props} open={open}>
     <ContainerModal width={width}>
-      <ButtonContainer>
+      {Boolean(closeButton) && <ButtonContainer>
         <Button color={'error'} onClick={closeButton}>
           <CloseIcon color={'error'}/>
         </Button>
-      </ButtonContainer>
-      {children}
+      </ButtonContainer>}
+      <ContainerChildren>
+        {children}
+      </ContainerChildren>
     </ContainerModal>
   </Modal>
 }
