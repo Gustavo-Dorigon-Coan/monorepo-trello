@@ -4,7 +4,6 @@ import com.unibave.monorepotrello.constant.ResourceName;
 import com.unibave.monorepotrello.service.UserDetailsServiceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -31,11 +30,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   private final AuthenticationEntryPointJwt unauthorizedHeader;
   private final UserDetailsServiceProvider userDetailsServiceProvider;
+  private final JwtUtils jwtUtils;
 
   public SecurityConfig(AuthenticationEntryPointJwt unauthorizedHeader,
-                        UserDetailsServiceProvider userDetailsServiceProvider) {
+                        UserDetailsServiceProvider userDetailsServiceProvider,
+                        JwtUtils jwtUtils) {
     this.unauthorizedHeader = unauthorizedHeader;
     this.userDetailsServiceProvider = userDetailsServiceProvider;
+    this.jwtUtils = jwtUtils;
   }
 
   @Override
@@ -50,7 +52,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Bean
   public Filter authenticationJwtTokenFilter() {
-    return new AuthTokenFilter();
+    return new AuthTokenFilter(jwtUtils, userDetailsServiceProvider);
   }
 
   @Bean

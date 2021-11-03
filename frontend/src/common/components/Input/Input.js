@@ -1,6 +1,7 @@
 import { COLORS } from "../../constants/Color";
 import styled from "styled-components";
 import {TextField} from "@mui/material";
+import {useEffect, useState} from "react";
 
 const Input = styled(TextField)`
   color: ${COLORS.Light};
@@ -23,8 +24,9 @@ const Input = styled(TextField)`
   }
 `;
 
-const handleInput = (event, setObject, object, setErrors, errors, required, validation) => {
+const handleInput = (event, setObject, object, setErrors, errors, required, validation, setNoChangeRequired) => {
   setErrors({...errors, [event.target.name]: false});
+  setNoChangeRequired(true);
   const value = event.target.value
   setObject({...object, [event.target.name]: value});
   if (required) {
@@ -38,9 +40,15 @@ const handleInput = (event, setObject, object, setErrors, errors, required, vali
 }
 
 const InputStyled = ({children, name, setObject, object, setErrors, errors, required = true, validation = () => true, type = 'text', ...props}) => {
+  const [ noChangeRequired, setNoChangeRequired] = useState(false);
+
+  useEffect(() => {
+    required && setErrors({...errors, [name]: true});
+  }, []);
+
   return <Input
-      error={Boolean(errors) && Boolean(errors[name]) && errors[name]}
-      onChange={event => handleInput(event, setObject, object, setErrors, errors, required, validation)}
+      error={noChangeRequired && Boolean(errors) && Boolean(errors[name])}
+      onChange={event => handleInput(event, setObject, object, setErrors, errors, required, validation, setNoChangeRequired)}
       name={name}
       type={type}
       label={children}

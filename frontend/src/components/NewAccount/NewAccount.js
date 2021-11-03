@@ -25,7 +25,7 @@ export const NewAccount = () => {
         genericError(setAlert, alert, response);
       }
     } else {
-      setAlert({...alert, open: true, message: 'Preencha todos os dados!', severity: 'error'});
+      setAlert({...alert, open: true, message: 'Preencha os campos corretamente!', severity: 'error'});
     }
   }
 
@@ -48,6 +48,13 @@ export const NewAccount = () => {
             setObject={setUser}
             object={user}
             name={'email'}
+            type={'email'}
+            validation={value => {
+              const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+              let b = re.test(value);
+              console.log('Pietro',b)
+              return b;
+            }}
             {...{errors, setErrors}}
           >Email</InputStyled>
         </Grid>
@@ -57,6 +64,7 @@ export const NewAccount = () => {
             object={user}
             name={'password'}
             type={'password'}
+            validation={value => value.length >= 8}
             {...{errors, setErrors}}
           >Senha</InputStyled>
         </Grid>

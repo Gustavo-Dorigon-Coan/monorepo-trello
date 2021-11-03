@@ -27,7 +27,7 @@ export const Login = () => {
         genericError(setAlert, alert, response);
       }
     } else {
-      setAlert({...alert, open: true, message: 'Preencha todos os dados!', severity: 'error'});
+      setAlert({...alert, open: true, message: 'Preencha os campos corretamente!', severity: 'error'});
     }
   }
 
@@ -51,6 +51,7 @@ export const Login = () => {
               object={user}
               name={'password'}
               type={'password'}
+              validation={value => value.length >= 8}
               {...{errors, setErrors}}
           >Senha</InputStyled>
         </Grid>

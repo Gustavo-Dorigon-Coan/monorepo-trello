@@ -25,7 +25,7 @@ export const NewProject = ({open, setOpen}) => {
         genericError(setAlert, alert, response);
       }
     } else {
-      setAlert({...alert, open: true, message: 'Preencha todos os dados!', severity: 'error'});
+      setAlert({...alert, open: true, message: 'Preencha os campos corretamente!', severity: 'error'});
     }
   }
 
@@ -43,8 +43,7 @@ export const NewProject = ({open, setOpen}) => {
                 setObject={setProject}
                 object={project}
                 name={'name'}
-                errors={errors}
-                setErrors={setErrors}
+                {...{errors, setErrors}}
               >Nome do Projeto</InputStyled>
             </Grid>
             <Grid container item lg={12}>

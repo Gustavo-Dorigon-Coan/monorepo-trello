@@ -9,8 +9,4 @@ public class LoggerService {
   public static void logger(String message, Exception exception) {
     logger.error(message + " {}", exception.getMessage());
   }
-
-  public static void logger(String message) {
-    logger.error(message);
-  }
 }

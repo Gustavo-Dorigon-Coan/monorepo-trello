@@ -3,11 +3,11 @@ package com.unibave.monorepotrello.security;
 
 import com.unibave.monorepotrello.service.LoggerService;
 import com.unibave.monorepotrello.service.UserDetailsServiceProvider;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,13 +17,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@Service
 public class AuthTokenFilter extends OncePerRequestFilter {
 
-  @Autowired
-  private JwtUtils jwtUtils;
+  private final JwtUtils jwtUtils;
+  private final UserDetailsServiceProvider userDetailsServiceProvider;
 
-  @Autowired
-  private UserDetailsServiceProvider userDetailsServiceProvider;
+  public AuthTokenFilter(JwtUtils jwtUtils,
+                         UserDetailsServiceProvider userDetailsServiceProvider) {
+    this.jwtUtils = jwtUtils;
+    this.userDetailsServiceProvider = userDetailsServiceProvider;
+  }
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)

@@ -7,7 +7,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import {theme} from "./common/utils/theme";
 import {Login} from "./components/Login/Login";
 import {Home} from "./components/Home/Home";
-import {NewAccount} from "./components/NewAccount/Login";
+import {NewAccount} from "./components/NewAccount/NewAccount";
 
 export const history = createBrowserHistory();
 

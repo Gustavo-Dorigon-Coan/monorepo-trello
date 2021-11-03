@@ -9,5 +9,5 @@ public class ResourceName {
 
     public static final String PROJECTS = "/projects";
 
-    public static final String LISTOFCARDS = "/listofcards";
+    public static final String LIST_OF_CARDS = "/list-of-cards";
 }
