@@ -27,9 +27,9 @@ export const Projects = ({reloadObserver}) => {
           <SubTitle>Projetos</SubTitle>
         </Grid>
         {projects && projects.map(project => (
-            <Grid item>
-              <CardProject project={project}/>
-            </Grid>
+          <Grid item>
+            <CardProject project={project}/>
+          </Grid>
         ))}
       </Grid>
     </Container>

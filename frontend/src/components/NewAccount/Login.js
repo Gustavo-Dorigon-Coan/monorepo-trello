@@ -37,27 +37,27 @@ export const NewAccount = () => {
         </Grid>
         <Grid item lg={12}>
           <InputStyled
-              setObject={setUser}
-              object={user}
-              name={'username'}
-              {...{errors, setErrors}}
+            setObject={setUser}
+            object={user}
+            name={'username'}
+            {...{errors, setErrors}}
           >Nome</InputStyled>
         </Grid>
         <Grid item lg={12}>
           <InputStyled
-              setObject={setUser}
-              object={user}
-              name={'email'}
-              {...{errors, setErrors}}
+            setObject={setUser}
+            object={user}
+            name={'email'}
+            {...{errors, setErrors}}
           >Email</InputStyled>
         </Grid>
         <Grid item lg={12}>
           <InputStyled
-              setObject={setUser}
-              object={user}
-              name={'password'}
-              type={'password'}
-              {...{errors, setErrors}}
+            setObject={setUser}
+            object={user}
+            name={'password'}
+            type={'password'}
+            {...{errors, setErrors}}
           >Senha</InputStyled>
         </Grid>
         <Grid item lg={8}>
@@ -70,5 +70,4 @@ export const NewAccount = () => {
     </ModalStyled>
     <AlertStyled alert={alert} setAlert={setAlert}/>
   </>
-
 }
