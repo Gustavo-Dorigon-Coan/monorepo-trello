@@ -11,11 +11,13 @@ const Container = styled.div`
   padding: 16px;
   border-radius: 16px;
   cursor: pointer;
-  
+
   :hover {
     background: ${COLORS.Light};
+    box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.63);
+    transform: scale(1.03);
   }
-  
+
   :active {
     background: ${COLORS.White};
   }

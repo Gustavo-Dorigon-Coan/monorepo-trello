@@ -6,6 +6,7 @@ import {SubTitle} from "../../common/components/SubTitle/SubTitle";
 import React, {useState} from "react";
 import {genericError, verifyErrors} from "../../common/utils/Functions";
 import {AuthService} from "../../common/services/AuthService";
+import { AppTitlePage } from "../../common/constants/Constants";
 import {HttpStatus} from "../../common/constants/HttpStatus";
 import {useHistory} from "react-router-dom";
 import {AlertStyled} from "../../common/components/AlertStyled/AlertStyled";
@@ -16,6 +17,8 @@ export const Login = () => {
   const [ user, setUser] = useState();
   const [ alert, setAlert] = useState({open: false});
   const history = useHistory();
+
+  document.title = AppTitlePage + 'Login';
 
   const sign = async () => {
     setWasSubmitted(true);

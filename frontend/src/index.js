@@ -8,8 +8,11 @@ import {theme} from "./common/utils/theme";
 import {Login} from "./components/Login/Login";
 import {Home} from "./components/Home/Home";
 import {NewAccount} from "./components/NewAccount/NewAccount";
+import {AppTitle} from "./common/constants/Constants";
 
 export const history = createBrowserHistory();
+
+document.title = AppTitle;
 
 ReactDOM.render(
   <React.StrictMode>

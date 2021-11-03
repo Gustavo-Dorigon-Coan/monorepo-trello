@@ -9,6 +9,7 @@ import {AuthService} from "../../common/services/AuthService";
 import {HttpStatus} from "../../common/constants/HttpStatus";
 import {useHistory} from "react-router-dom";
 import {AlertStyled} from "../../common/components/AlertStyled/AlertStyled";
+import {AppTitlePage} from "../../common/constants/Constants";
 
 export const NewAccount = () => {
   const [ errors, setErrors] = useState({password: true, username: true, email: true});
@@ -16,6 +17,7 @@ export const NewAccount = () => {
   const [ user, setUser] = useState();
   const [ alert, setAlert] = useState({open: false});
   const history = useHistory();
+  document.title = AppTitlePage + 'Criar Conta';
 
   const sign = async () => {
     setWasSubmitted(true);

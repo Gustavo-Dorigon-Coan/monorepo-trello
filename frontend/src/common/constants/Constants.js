@@ -1,1 +1,2 @@
-export const AppTitle = 'Trello Foda';
+export const AppTitle = 'TopTasks';
+export const AppTitlePage = AppTitle + ' | ';

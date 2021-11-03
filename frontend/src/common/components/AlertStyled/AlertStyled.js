@@ -4,12 +4,12 @@ import styled from "styled-components";
 import {COLORS} from "../../constants/Color";
 
 function TransitionLeft(props) {
-  return <Slide {...props} style={{boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.68)', border: `1px solid ${COLORS.Light}`}} direction="top" />;
+  return <Slide {...props} style={{boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.68)', border: `1px solid ${COLORS.ContrastLight}`}}  />;
 }
 
 const SnackbarStyled = styled(Snackbar)`
   position: absolute;
-  top: 40px !important;
+  bottom: 0 !important;
   left: 50% !important;
   width: 700px;
   height: 50px;
