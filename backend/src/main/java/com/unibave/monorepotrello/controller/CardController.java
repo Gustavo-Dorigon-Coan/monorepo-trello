@@ -33,5 +33,11 @@ public class CardController {
     public void save(@RequestBody Card card){
         cardService.save(card);
     }
+
+    @PatchMapping(value = "/next-list/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.CREATED)
+    public void nextList(@PathVariable("id") Long id, @RequestBody ListOfCards listOfCards){
+        cardService.nextList(id, listOfCards);
+    }
 }
 
