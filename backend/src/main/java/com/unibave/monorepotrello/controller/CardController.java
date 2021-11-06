@@ -39,5 +39,11 @@ public class CardController {
     public void nextList(@PathVariable("id") Long id, @RequestBody ListOfCards listOfCards){
         cardService.nextList(id, listOfCards);
     }
+
+    @PatchMapping(value = "/set-done/{id}")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void setDone(@PathVariable("id") Long id, @RequestBody Boolean done){
+        cardService.setDone(id, done);
+    }
 }
 

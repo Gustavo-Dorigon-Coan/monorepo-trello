@@ -2,9 +2,7 @@ package com.unibave.monorepotrello.service;
 
 import com.unibave.monorepotrello.model.Card;
 import com.unibave.monorepotrello.model.ListOfCards;
-import com.unibave.monorepotrello.model.Role;
 import com.unibave.monorepotrello.repository.CardRepository;
-import com.unibave.monorepotrello.repository.RoleRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,5 +46,14 @@ public class CardService {
     @Transactional
     public void nextList(Long id, ListOfCards listOfCards) {
         cardRepository.nextList(id, listOfCards.getId());
+    }
+
+    @Transactional
+    public void setDone(Long id, Boolean done) {
+        if (done) {
+            cardRepository.setDone(id,1);
+        } else {
+            cardRepository.setDone(id,0);
+        }
     }
 }
