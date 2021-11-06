@@ -1,11 +1,13 @@
 package com.unibave.monorepotrello.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import java.util.Objects;
 
 @Entity(name = "card")
 @Table(name = "card")
+@JsonIgnoreProperties(value = {"listOfCards"},allowSetters = true)
 public class Card {
 
     @Id
@@ -48,14 +50,6 @@ public class Card {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public ListOfCards getListOfTasks() {
-        return listOfCards;
-    }
-
-    public void setListOfTasks(ListOfCards listOfCards) {
-        this.listOfCards = listOfCards;
     }
 
     public ListOfCards getListOfCards() {

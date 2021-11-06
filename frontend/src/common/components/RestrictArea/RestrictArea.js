@@ -29,7 +29,7 @@ export const RestrictArea = ({children}) => {
 
   const validateToken = async () => {
     const isTokenValid = await AuthService.validateToken();
-    if (isTokenValid.data) {
+    if (isTokenValid?.data) {
       setIsLogged({isLogged: true});
     } else {
       setIsLogged({isLogged: false});

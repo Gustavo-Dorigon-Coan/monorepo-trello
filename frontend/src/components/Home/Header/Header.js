@@ -1,15 +1,28 @@
-import {Container, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import {Title} from "../../../common/components/Title/Title";
 import { AppTitle } from "../../../common/constants/Constants";
 import {ButtonStyled} from "../../../common/components/Button/Button";
 import {AuthService} from "../../../common/services/AuthService";
 import {COLORS} from "../../../common/constants/Color";
 import {Person} from "@mui/icons-material";
+import styled from "styled-components";
+
+export const Container = styled.div`
+  width: 100%;
+  height: 88px;
+  background: ${COLORS.BackgroundIten};
+  margin-bottom: 16px;
+`;
+
+export const Wrapper = styled(Grid)`
+  width: 100%;
+  padding: 0px 16px 0 16px;
+`;
 
 export const Header = ({setOpenModalProject}) => {
   const user = AuthService.getUser();
-  return <Container maxWidth={'100%'}>
-    <Grid container spacing={3}>
+  return <Container>
+    <Wrapper container spacing={3} display={"flex"} alignItems={"center"}>
       <Grid item lg={4} display={'flex'}>
         <Title>{AppTitle}</Title>
       </Grid>
@@ -23,6 +36,6 @@ export const Header = ({setOpenModalProject}) => {
         {user && <Title margin={'0 8px'} color={COLORS.Blue}>{user?.username}</Title>}
         <Person style={{marginLeft: '8px', width: '64px', height: '64px'}}/>
       </Grid>
-    </Grid>
+    </Wrapper>
   </Container>
 }

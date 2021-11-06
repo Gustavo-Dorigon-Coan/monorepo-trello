@@ -9,6 +9,7 @@ import {Login} from "./components/Login/Login";
 import {Home} from "./components/Home/Home";
 import {NewAccount} from "./components/NewAccount/NewAccount";
 import {AppTitle} from "./common/constants/Constants";
+import {Project} from "./components/Project/Project";
 
 export const history = createBrowserHistory();
 
@@ -21,6 +22,7 @@ ReactDOM.render(
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/new-account" component={NewAccount} />
+          <Route path="/project/:id" component={Project} />
           <Route path="/" component={Home} />
         </Switch>
       </BrowserRouter>

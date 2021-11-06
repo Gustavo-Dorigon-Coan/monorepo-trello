@@ -11,13 +11,22 @@ import java.util.Optional;
 public class ProjectService {
 
     private final ProjectRepository projectRepository;
+    private final ListOfCardsService listOfCardsService;
 
-    public ProjectService(ProjectRepository projectRepository) {
+    public ProjectService(ProjectRepository projectRepository,
+                          ListOfCardsService listOfCardsService) {
         this.projectRepository = projectRepository;
+        this.listOfCardsService = listOfCardsService;
     }
 
     public void save(Project project) {
-        projectRepository.save(project);
+        Project projectSaved = projectRepository.save(project);
+        if (!projectSaved.getListOfCards().isEmpty()) {
+            projectSaved.getListOfCards().forEach(listOfCards -> {
+                listOfCards.setProject(projectSaved);
+                listOfCardsService.save(listOfCards);
+            });
+        }
     }
 
     public List<Project> findAll() {

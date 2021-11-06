@@ -13,15 +13,23 @@ import {HttpStatus} from "../../constants/HttpStatus";
 export const NewProject = ({open, setOpen}) => {
   const [ errors, setErrors] = useState({name: true});
   const [ wasSubmitted, setWasSubmitted] = useState(false);
-  const [ project, setProject] = useState({users: [{id: AuthService.getUser().id}]});
+  const projectInitial = {users: [{id: AuthService.getUser().id}], listOfCards: [{name: 'To do'},{name: 'Done'}]};
+  const [ project, setProject] = useState(projectInitial);
   const [ alert, setAlert] = useState({open: false});
+
+  const closeAndClearState = () => {
+    setOpen(false);
+    setProject(projectInitial);
+    setErrors({name: true});
+    setWasSubmitted(false);
+  }
 
   const save = async () => {
     setWasSubmitted(true);
     if (verifyErrors(errors)) {
       const response = await ProjectService.save(project);
       if (HttpStatus.isOkRange(response?.status)) {
-        setOpen(false);
+        closeAndClearState();
         setAlert({...alert, open: true, message: 'Projeto registrado!', severity: 'success'});
       } else {
         genericError(setAlert, alert, response);
@@ -33,30 +41,30 @@ export const NewProject = ({open, setOpen}) => {
 
   return <>
     <ModalStyled open={open} closeButton={() => setOpen(false)}>
-        <Grid container spacing={3}>
-          <Grid container item spacing={3} lg={12}>
-            <Grid item lg={6}>
-              <SubTitle margin={'0 0 0 16px'}>Novo Projeto</SubTitle>
-            </Grid>
+      <Grid container spacing={3}>
+        <Grid container item spacing={3} lg={12}>
+          <Grid item lg={6}>
+            <SubTitle margin={'0 0 0 16px'}>Novo Projeto</SubTitle>
           </Grid>
-          <Grid container item spacing={3} lg={12}>
-            <Grid item lg={12}>
-              <InputStyled
-                setObject={setProject}
-                object={project}
-                name={'name'}
-                {...{errors, setErrors, wasSubmitted}}
-              >Nome do Projeto</InputStyled>
-            </Grid>
-            <Grid container item lg={12}>
-              <Grid item lg={9}/>
-              <Grid item lg={3}>
-                <ButtonStyled onClick={() => save()}>Cadastrar</ButtonStyled>
-              </Grid>
+        </Grid>
+        <Grid container item spacing={3} lg={12}>
+          <Grid item lg={12}>
+            <InputStyled
+              setObject={setProject}
+              object={project}
+              name={'name'}
+              {...{errors, setErrors, wasSubmitted}}
+            >Nome do Projeto</InputStyled>
+          </Grid>
+          <Grid container item lg={12}>
+            <Grid item lg={9}/>
+            <Grid item lg={3}>
+              <ButtonStyled onClick={() => save()}>Cadastrar</ButtonStyled>
             </Grid>
           </Grid>
         </Grid>
-      </ModalStyled>
+      </Grid>
+    </ModalStyled>
     <AlertStyled alert={alert} setAlert={setAlert}/>
   </>
 }
