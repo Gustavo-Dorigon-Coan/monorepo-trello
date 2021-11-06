@@ -38,4 +38,8 @@ public class CardService {
     public Optional<Card> findById(Long id) {
         return cardRepository.findById(id);
     }
+
+    public List<Card> findByListOfCardsId(Long id){
+        return cardRepository.findByListOfCardsId(id);
+    }
 }
