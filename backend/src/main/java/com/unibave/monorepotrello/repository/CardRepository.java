@@ -15,4 +15,8 @@ public interface CardRepository extends JpaRepository<Card, Long> {
     @Modifying
     @Query(value = "update card set card.list_of_cards_id = :listId where card.id = :id", nativeQuery = true)
      void nextList(@Param("id") Long id, @Param("listId") Long listId);
+
+    @Modifying
+    @Query(value = "update card set card.done = :done where card.id = :id", nativeQuery = true)
+    void setDone(@Param("id") Long id, @Param("done") int done);
 }
