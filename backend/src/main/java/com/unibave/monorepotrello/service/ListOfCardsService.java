@@ -4,6 +4,7 @@ import com.unibave.monorepotrello.model.ListOfCards;
 import com.unibave.monorepotrello.repository.ListOfCardsRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,5 +35,10 @@ public class ListOfCardsService {
     public Optional<ListOfCards> findById(Long id) {
         return listOfCardsRepository.findById(id);
     }
+
+    public List<ListOfCards> findByProjectId(Long id){
+        return listOfCardsRepository.findByProjectId(id);
+    }
+
 }
 
