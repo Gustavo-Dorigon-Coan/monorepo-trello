@@ -1,7 +1,8 @@
 import {Alert, Slide, Snackbar} from "@mui/material";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import styled from "styled-components";
 import {COLORS} from "../../constants/Color";
+import {useSelector} from "react-redux";
 
 function TransitionLeft(props) {
   return <Slide {...props} style={{boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.68)', border: `1px solid ${COLORS.ContrastLight}`}}  />;
@@ -32,15 +33,22 @@ const SnackbarStyled = styled(Snackbar)`
   }
 `
 
-export const AlertStyled = ({alert, setAlert}) => {
+export const AlertStyled = () => {
+  const alert = useSelector(store => store.alertState.alert);
+  const [ open, setOpen ] = useState(false);
+
+  useEffect(() => {
+    setOpen(alert.open);
+  },[alert]);
+
   return <SnackbarStyled
     autoHideDuration={6700}
     transitionDuration={600}
-    open={alert.open}
-    onClose={() => setAlert({...alert, open: false})}
+    open={open}
+    onClose={() => setOpen(false)}
     TransitionComponent={TransitionLeft}
     spacing={2}>
-    <Alert severity={alert?.severity} style={{width: '100%'}} onClose={() => setAlert({...alert, open: false})}>
+    <Alert severity={alert?.severity} style={{width: '100%'}} onClose={() => setOpen(false)}>
       {alert?.message}
     </Alert>
   </SnackbarStyled>

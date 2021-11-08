@@ -10,8 +10,6 @@ import java.util.List;
 
 public interface CardRepository extends JpaRepository<Card, Long> {
 
-    List<Card> findByListOfCardsId(Long id);
-
     @Modifying
     @Query(value = "update card set card.list_of_cards_id = :listId where card.id = :id", nativeQuery = true)
      void nextList(@Param("id") Long id, @Param("listId") Long listId);

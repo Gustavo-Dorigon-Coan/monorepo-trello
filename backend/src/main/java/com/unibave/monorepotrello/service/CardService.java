@@ -39,10 +39,6 @@ public class CardService {
         return cardRepository.findById(id);
     }
 
-    public List<Card> findByListOfCardsId(Long id){
-        return cardRepository.findByListOfCardsId(id);
-    }
-
     @Transactional
     public void nextList(Long id, ListOfCards listOfCards) {
         cardRepository.nextList(id, listOfCards.getId());

@@ -7,5 +7,4 @@ import java.util.List;
 
 public interface ListOfCardsRepository extends JpaRepository<ListOfCards, Long> {
 
-    List<ListOfCards> findByProjectId(Long id);
 }

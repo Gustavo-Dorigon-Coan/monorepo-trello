@@ -21,13 +21,6 @@ public class CardController {
         this.cardService = cardService;
     }
 
-    @GetMapping(value = "/list-of-cards/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<Card>> findByListOfCardsId(
-            @PathVariable("id") Long id){
-        return ResponseEntity.ok().body(cardService.findByListOfCardsId(id));
-    }
-
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody Card card){

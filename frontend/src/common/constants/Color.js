@@ -8,5 +8,5 @@ export const COLORS = {
   ContrastBackground: '#0f1111',
   Blue: '#71dee4',
   Danger: '#da0321',
-  Green: '#00cb6d',
+  Green: '#66bb6a',
 };

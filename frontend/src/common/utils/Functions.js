@@ -1,3 +1,5 @@
+import {ALERT_TYPE} from "../reducers/alertState";
+
 export const verifyErrors = errors => {
   let existsErrors = Boolean(errors)
   if (existsErrors) {;
@@ -10,27 +12,33 @@ export const verifyErrors = errors => {
 }
 
 
-export const genericError = (setAlert, alert, response) => {
+export const genericError = (dispatch, response) => {
   if (response === undefined) {
-    setAlert({
-      ...alert,
-      open: true,
-      message: `Ops! Houston temos um problema!`,
-      severity: 'error'
+    dispatch({
+      type: ALERT_TYPE,
+      alert: {
+        open: true,
+        message: `Ops! Houston temos um problema!`,
+        severity: 'error'
+      },
     });
   } else if (Boolean(response.data.message)){
-    setAlert({
-      ...alert,
-      open: true,
-      message: `${response?.data?.message}`,
-      severity: 'error'
+    dispatch({
+      type: ALERT_TYPE,
+      alert: {
+        open: true,
+        message: `${response?.data?.message}`,
+        severity: 'error'
+      },
     });
   } else {
-    setAlert({
-      ...alert,
-      open: true,
-      message: `Erro: ${response?.data?.status} - ${response?.data?.error}`,
-      severity: 'error'
+    dispatch({
+      type: ALERT_TYPE,
+      alert: {
+        open: true,
+        message: `Erro: ${response?.data?.status} - ${response?.data?.error}`,
+        severity: 'error'
+      },
     });
   }
 }

@@ -20,11 +20,4 @@ public class ListOfCardsController {
         this.listOfCardsService = listOfCardsService;
     }
 
-    @GetMapping(value = "/project/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<List<ListOfCards>> findByProjectId(
-            @PathVariable("id") Long id){
-        return ResponseEntity.ok().body(listOfCardsService.findByProjectId(id));
-    }
-
 }

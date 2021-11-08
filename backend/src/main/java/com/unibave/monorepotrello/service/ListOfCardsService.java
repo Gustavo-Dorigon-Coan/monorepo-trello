@@ -36,9 +36,5 @@ public class ListOfCardsService {
         return listOfCardsRepository.findById(id);
     }
 
-    public List<ListOfCards> findByProjectId(Long id){
-        return listOfCardsRepository.findByProjectId(id);
-    }
-
 }
 

@@ -7,7 +7,7 @@ const ButtonCuston = styled(Button)`
 ` ;
 
 const ButtonStyled = ({children, width = '100%', ...props}) => {
-  return <ButtonCuston color={'secondary'} variant={'contained'} size={'large'} width={width} {...props}>{children}</ButtonCuston>
+  return <ButtonCuston color={'success'} variant={'contained'} size={'large'} width={width} {...props}>{children}</ButtonCuston>
 }
 
 export {ButtonStyled};
