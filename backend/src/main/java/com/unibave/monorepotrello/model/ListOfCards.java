@@ -9,6 +9,7 @@ import java.util.Objects;
 
 @Entity(name = "list_of_cards")
 @Table(name = "list_of_cards")
+@JsonIgnoreProperties(value = {"project"},allowSetters = true)
 public class ListOfCards {
 
     @Id

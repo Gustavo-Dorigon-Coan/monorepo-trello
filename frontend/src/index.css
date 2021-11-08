@@ -5,9 +5,29 @@ body {
   font-weight:normal;
   color: #eaeaea;
   background-color: #1b1e1f;
-  padding: 8px;
+  padding: 0;
+  margin: 0;
 }
 
 :focus-visible {
   outline: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(132, 136, 136, 0.7);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(132, 136, 136, 0.7);
 }

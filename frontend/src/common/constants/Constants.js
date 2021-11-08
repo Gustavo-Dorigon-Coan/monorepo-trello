@@ -1,2 +1,2 @@
-export const AppTitle = 'TopTasks';
+export const AppTitle = 'ValleyTaks';
 export const AppTitlePage = AppTitle + ' | ';

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {COLORS} from "../../constants/Color";
 import {SubTitle} from "../SubTitle/SubTitle";
+import {useHistory} from "react-router-dom";
 
 const Container = styled.div`
   width: 238px;
@@ -24,7 +25,9 @@ const Container = styled.div`
 `
 
 export const CardProject = ({project}) => {
-  return <Container>
+  const history = useHistory();
+
+  return <Container onClick={() => history.push(`/project/${project.id}`)}>
     <SubTitle>{project.name}</SubTitle>
   </Container>
 }

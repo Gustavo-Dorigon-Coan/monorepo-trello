@@ -2,6 +2,7 @@ package com.unibave.monorepotrello.controller;
 
 import com.unibave.monorepotrello.constant.ResourceName;
 import com.unibave.monorepotrello.model.Project;
+import com.unibave.monorepotrello.payload.response.MessageResponse;
 import com.unibave.monorepotrello.service.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,15 @@ public class ProjectController {
     public ResponseEntity<List<Project>> findByUserId(
             @PathVariable("id") Long id){
         return ResponseEntity.ok().body(projectService.findByUserId(id));
+    }
+
+    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Project> findById(
+        @PathVariable("id") Long id) throws Exception {
+        return ResponseEntity.ok().body(projectService.findById(id).orElseThrow(
+            () -> new Exception("Project not found - " + id)
+        ));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
