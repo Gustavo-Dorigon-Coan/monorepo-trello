@@ -28,6 +28,12 @@ public class ListOfCards {
     @JsonIgnoreProperties(value = {"listOfCards"},allowSetters = true)
     private List<Card> cards;
 
+    @Column
+    private String color;
+
+    @Column(name = "order_sequence")
+    private int order;
+
     public Long getId() {
         return id;
     }
