@@ -3,8 +3,8 @@ package com.unibave.monorepotrello.service;
 import com.unibave.monorepotrello.model.ListOfCards;
 import com.unibave.monorepotrello.repository.ListOfCardsRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,6 +34,16 @@ public class ListOfCardsService {
 
     public Optional<ListOfCards> findById(Long id) {
         return listOfCardsRepository.findById(id);
+    }
+
+    @Transactional
+    public void changeColor(Long id, String color){
+        listOfCardsRepository.changeColor(id, color);
+    }
+
+    @Transactional
+    public void changeOrder(Long id, int order){
+        listOfCardsRepository.changeOrder(id,order);
     }
 
 }
