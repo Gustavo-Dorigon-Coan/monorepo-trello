@@ -35,7 +35,7 @@ public class ListOfCardsController {
         listOfCardsService.changeOrder(id, order);
     }
 
-    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id")Long id){
         listOfCardsService.delete(id);
