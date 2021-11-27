@@ -6,7 +6,6 @@ class AuthService {
     const response = await request.post(`/auth/sign`, user);
     if (HttpStatus.isOkRange(response?.status)) {
       sessionStorage.setItem('user', JSON.stringify(response.data));
-      sessionStorage.setItem('token', JSON.stringify(response.data.accessToken));
     }
     return response;
   };
@@ -29,7 +28,7 @@ class AuthService {
   };
 
   getToken = () => {
-    return JSON.parse(sessionStorage.getItem('token'));
+    return instance.getUser()?.accessToken;
   };
 
   signout = () => {

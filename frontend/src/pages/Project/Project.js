@@ -10,7 +10,6 @@ import {List} from "./List/List";
 import {RestrictArea} from "../../common/components/RestrictArea/RestrictArea";
 import {useDispatch, useSelector} from "react-redux";
 import {PROJECT_TYPE} from "../../common/reducers/projectState";
-import {NewCard} from "../../common/components/NewCard/NewCard";
 
 export const loadProject = async (dispatch, id) => {
   const response = await ProjectService.findById(id);
@@ -58,7 +57,7 @@ export const Project = () => {
 
   return (
     <RestrictArea>
-      <Header title={project?.name} />
+      <Header project={project} />
       <ListContainer onWheel={horizontalScroll}>
         {Boolean(project?.listOfCards) && project?.listOfCards.map(listOfCard =>
           <List list={listOfCard} />)}

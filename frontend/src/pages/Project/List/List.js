@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Card from "../Card/Card";
-import {Button} from "@mui/material";
+import {Button, Fade, Tooltip} from "@mui/material";
 import {Add} from "@mui/icons-material";
 import {NewCard} from "../../../common/components/NewCard/NewCard";
 import {useDispatch, useSelector} from "react-redux";
@@ -44,7 +44,13 @@ export const List = ({list}) => {
     <ListStyled onDragOver={() => setListDrop()}>
       <Header>
         <Title>{list.name}</Title>
-        <Button size={"small"} color={"success"} onClick={() => openNewCard()}><Add/></Button>
+        <Tooltip
+          TransitionComponent={Fade}
+          TransitionProps={{ timeout: 600 }}
+          title={'Criar nova tarefa'}
+          placement="top">
+          <Button size={"small"} color={"success"} onClick={() => openNewCard()}><Add/></Button>
+        </Tooltip>
       </Header>
       <DropList>
         {Boolean(list.cards) && list.cards.map(card => <Card {...{list,card}} />)}
