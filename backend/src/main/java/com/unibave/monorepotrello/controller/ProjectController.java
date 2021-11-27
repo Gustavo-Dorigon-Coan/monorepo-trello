@@ -42,7 +42,7 @@ public class ProjectController {
         projectService.save(project);
     }
 
-    @PatchMapping(value = "/edit-list/{id}", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @PatchMapping(value = "/rename/{id}", consumes = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public void renameProject(@PathVariable("id") Long id,@RequestBody String name){
         projectService.renameProject(id,name);
