@@ -16,6 +16,11 @@ public class ListOfCardsService {
     }
 
     public void save(ListOfCards listOfCards) {
+        if (listOfCards.getOrder() == null) {
+            Integer maxOrderByProject =
+                    listOfCardsRepository.getMaxOrderByProject(listOfCards.getProject().getId());
+            listOfCards.setOrder(maxOrderByProject + 1);
+        }
         listOfCardsRepository.save(listOfCards);
     }
 
