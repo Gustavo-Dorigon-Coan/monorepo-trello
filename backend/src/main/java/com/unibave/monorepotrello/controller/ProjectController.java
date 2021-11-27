@@ -50,7 +50,7 @@ public class ProjectController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable ("id")Long id){
+    public void delete(@PathVariable("id")Long id){
         projectService.delete(id);
     }
   

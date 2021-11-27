@@ -13,9 +13,11 @@ import java.util.Optional;
 public class CardService {
 
     private final CardRepository cardRepository;
+    private final CommentService commentService;
 
-    public CardService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository, CommentService commentService) {
         this.cardRepository = cardRepository;
+        this.commentService = commentService;
     }
 
     public void save(Card card) {
@@ -27,6 +29,7 @@ public class CardService {
     }
 
     public void delete(Long id) {
+        commentService.deleteAllByCardId(id);
         cardRepository.deleteById(id);
     }
 
