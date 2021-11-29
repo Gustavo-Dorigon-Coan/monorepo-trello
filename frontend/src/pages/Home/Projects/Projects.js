@@ -29,7 +29,7 @@ export const Projects = () => {
     loadProjects(dispatch);
   }, []);
 
-  return Boolean(projects) && (
+  return Boolean(projects) && Boolean(projects[1]) && (
     <Container>
       <Grid container spacing={3}>
         <Grid item sm={12}>

@@ -11,6 +11,7 @@ import {useDispatch} from "react-redux";
 import {ALERT_TYPE} from "../../reducers/alertState";
 import {useHistory} from "react-router-dom";
 import {loadProject} from "../../../pages/Project/Project";
+import {loadProjects} from "../../../pages/Home/Projects/Projects";
 
 export const EditProject = ({open, setOpen, oldProject}) => {
   const [ errors, setErrors] = useState({name: true});
@@ -55,6 +56,7 @@ export const EditProject = ({open, setOpen, oldProject}) => {
     const response = await ProjectService.remove(project.id);
     if (HttpStatus.isOkRange(response?.status)) {
       closeAndClearState();
+      loadProjects(dispatch);
       history.push('/');
       dispatch({
         type: ALERT_TYPE,

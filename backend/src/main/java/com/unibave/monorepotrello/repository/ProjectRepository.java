@@ -17,6 +17,11 @@ public interface ProjectRepository extends JpaRepository<Project,Long> {
     @Modifying
     @Query(value = "update project set name = :name where id = :id", nativeQuery = true)
     void renameProject(@Param("id") Long id,@Param("name") String name);
+
+    @Query(value = "select list_of_cards.id from list_of_cards where list_of_cards.project_id = :id " +
+        "and list_of_cards.name = 'Concluído'",
+        nativeQuery = true)
+    Long getListConcludedId(Long id);
 }
 
 

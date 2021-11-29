@@ -4,6 +4,7 @@ import com.unibave.monorepotrello.model.Comment;
 import com.unibave.monorepotrello.repository.CommentRepository;
 import java.util.List;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CommentService {
@@ -21,6 +22,7 @@ public class CommentService {
         return commentRepository.findByCardIdOrderByCreatedAtDesc(id);
     }
 
+    @Transactional
     public void deleteAllByCardId(Long id){
         commentRepository.deleteAllByCardId(id);
     }

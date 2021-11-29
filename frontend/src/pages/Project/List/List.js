@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import Card from "../Card/Card";
 import {Button, Fade, Tooltip} from "@mui/material";
 import {Add} from "@mui/icons-material";
-import {NewCard} from "../../../common/components/NewCard/NewCard";
 import {useDispatch, useSelector} from "react-redux";
 import {PROJECT_TYPE} from "../../../common/reducers/projectState";
 import {DropList, GhostCard, Header, ListStyled, Title} from "./styled";

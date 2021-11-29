@@ -27,6 +27,13 @@ public class ProjectController {
         return ResponseEntity.ok().body(projectService.findByUserId(id));
     }
 
+    @GetMapping(value = "/{id}/get_list_concluded_id",produces = MediaType.ALL_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public Long getListConcludedId(
+        @PathVariable("id") Long id) {
+        return projectService.getListConcludedId(id);
+    }
+
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Project> findById(
