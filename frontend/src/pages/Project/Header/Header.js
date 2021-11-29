@@ -7,6 +7,9 @@ import {SubTitle} from "../../../common/components/SubTitle/SubTitle";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import {EDIT_LISTS_TYPE} from "../../../common/reducers/editListsState";
 import {useDispatch} from "react-redux";
+import {EditProject} from "../../../common/components/EditProject/EditProject";
+import {useState} from "react";
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 
 export const Container = styled.div`
   width: 100%;
@@ -22,6 +25,7 @@ export const ButtonsContainer = styled.div`
 `;
 
 export const Header = ({project}) => {
+  const [ openEdit, setOpenEdit ] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -39,9 +43,13 @@ export const Header = ({project}) => {
     </Button>
     <SubTitle margin={'8px 0 0 16px'} color={COLORS.Light}>{project?.name}</SubTitle>
     <ButtonsContainer>
-      <Button color={'success'} onClick={() => openEditLists()} startIcon={<ModeEditIcon />}>
+      <Button color={'success'} onClick={() => openEditLists()} startIcon={<FormatListBulletedIcon />}>
         Listas
-    </Button>
+      </Button>
+      <Button color={'success'} onClick={() => setOpenEdit(true)} startIcon={<ModeEditIcon />}>
+        Editar
+      </Button>
     </ButtonsContainer>
+    <EditProject open={openEdit} setOpen={setOpenEdit} oldProject={project} />
   </Container>
 }

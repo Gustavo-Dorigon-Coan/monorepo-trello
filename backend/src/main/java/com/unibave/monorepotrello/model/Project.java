@@ -20,6 +20,9 @@ public class Project {
     @Column
     private String name;
 
+    @Column
+    private Boolean inbox;
+
     @OneToMany(mappedBy = "project")
     @JsonIgnoreProperties(value = {"projects"},allowSetters = true)
     private List<ListOfCards> listOfCards;
@@ -61,6 +64,14 @@ public class Project {
 
     public void setUsers(List<User> users) {
         this.users = users;
+    }
+
+    public Boolean getInbox() {
+        return inbox;
+    }
+
+    public void setInbox(Boolean inbox) {
+        this.inbox = inbox;
     }
 
     @Override

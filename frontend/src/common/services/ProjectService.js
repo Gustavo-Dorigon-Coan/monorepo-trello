@@ -12,6 +12,14 @@ class ProjectService {
   save = project => {
     return request.post(`/projects`, project);
   };
+
+  rename = project => {
+    return request.patch(`/projects/rename/${project.id}`, project.name, {headers: {contentType: 'text/plain'}});
+  };
+
+  remove = id => {
+    return request.remove(`/projects/${id}`);
+  };
 }
 
 const instance = new ProjectService();

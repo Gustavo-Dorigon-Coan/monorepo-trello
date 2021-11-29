@@ -6,7 +6,6 @@ const ColorButtonStyled = styled.div`
   width: 40px;
   height: 40px;
   margin: auto;
-  margin-top: 8px;
   display: flex;
   border-radius: 8px;
   background: ${({color}) => color ? color : '#fefefe'};

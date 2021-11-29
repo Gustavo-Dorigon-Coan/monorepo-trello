@@ -6,7 +6,7 @@ import {useEffect, useState} from "react";
 const Input = styled(TextField)`
   color: ${COLORS.Light};
   background: ${COLORS.BackgroundIten};
-  width: 100%;
+  width: ${({width}) => width ? width : '100%'};
   border-radius: 6px;
 
   .css-ume8vi-MuiInputBase-input-MuiInput-input {
@@ -50,6 +50,7 @@ const InputStyled = ({children, name, setObject, object, setErrors, errors, requ
       error={noChangeRequired && Boolean(errors) && Boolean(errors[name])}
       onChange={event => handleInput(event, setObject, object, setErrors, errors, required, validation, setNoChangeRequired)}
       name={name}
+      value={Boolean(object) && Boolean(object[name]) ? object[name] : ''}
       type={type}
       label={children}
       {...props}/>

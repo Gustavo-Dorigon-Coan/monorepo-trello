@@ -1,6 +1,5 @@
 package com.unibave.monorepotrello.security;
 
-
 import com.unibave.monorepotrello.service.LoggerService;
 import com.unibave.monorepotrello.service.UserDetailsServiceProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

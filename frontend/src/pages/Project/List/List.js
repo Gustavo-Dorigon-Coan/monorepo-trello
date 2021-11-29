@@ -42,8 +42,8 @@ export const List = ({list}) => {
 
   return (
     <ListStyled onDragOver={() => setListDrop()}>
-      <Header>
-        <Title>{list.name}</Title>
+      <Header color={list.color}>
+        <Title color={list.color}>{list.name}</Title>
         <Tooltip
           TransitionComponent={Fade}
           TransitionProps={{ timeout: 600 }}

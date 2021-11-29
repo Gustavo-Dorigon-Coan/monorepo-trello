@@ -3,27 +3,28 @@ import {InputStyled} from "../InputStyled/InputStyled";
 import {ButtonStyled} from "../Button/Button";
 import {SubTitle} from "../SubTitle/SubTitle";
 import {ModalStyled} from "../ModalStyled/ModalStyled";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {ProjectService} from "../../services/ProjectService";
 import {genericError, verifyErrors} from "../../utils/Functions";
-import {AuthService} from "../../services/AuthService";
 import {HttpStatus} from "../../constants/HttpStatus";
-import {loadProjects} from "../../../pages/Home/Projects/Projects";
 import {useDispatch} from "react-redux";
-import {PROJECTS_TYPE} from "../../reducers/projectsState";
 import {ALERT_TYPE} from "../../reducers/alertState";
+import {useHistory} from "react-router-dom";
+import {loadProject} from "../../../pages/Project/Project";
 
-export const NewProject = ({open, setOpen}) => {
+export const EditProject = ({open, setOpen, oldProject}) => {
   const [ errors, setErrors] = useState({name: true});
   const [ wasSubmitted, setWasSubmitted] = useState(false);
-  const projectInitial = {users: [{id: AuthService.getUser().id}], inbox: false, listOfCards:
-      [{name: 'Tarefas', order: 0, color: '#53fd7e'}, {name: 'Concluído', order: 1, color: '#28ab26'}]};
-  const [ project, setProject] = useState(projectInitial);
+  const [ project, setProject] = useState();
   const dispatch = useDispatch();
+  const history = useHistory();
+
+  useEffect(() => {
+    setProject({...oldProject});
+  },[oldProject]);
 
   const closeAndClearState = () => {
     setOpen(false);
-    setProject(projectInitial);
     setErrors({name: true});
     setWasSubmitted(false);
   }
@@ -31,17 +32,13 @@ export const NewProject = ({open, setOpen}) => {
   const save = async () => {
     setWasSubmitted(true);
     if (verifyErrors(errors)) {
-      const response = await ProjectService.save(project);
+      const response = await ProjectService.rename(project);
       if (HttpStatus.isOkRange(response?.status)) {
         closeAndClearState();
-        loadProjects(dispatch);
-        dispatch({
-          type: PROJECTS_TYPE,
-          projects: response.data,
-        });
+        loadProject(dispatch, project.id);
         dispatch({
           type: ALERT_TYPE,
-          alert: {open: true, message: 'Projeto registrado!', severity: 'success'},
+          alert: {open: true, message: 'Projeto Alterado!', severity: 'success'},
         });
       } else {
         genericError(dispatch, response);
@@ -54,11 +51,25 @@ export const NewProject = ({open, setOpen}) => {
     }
   }
 
+  const remove = async () => {
+    const response = await ProjectService.remove(project.id);
+    if (HttpStatus.isOkRange(response?.status)) {
+      closeAndClearState();
+      history.push('/');
+      dispatch({
+        type: ALERT_TYPE,
+        alert: {open: true, message: 'Projeto Deletado!', severity: 'success'},
+      });
+    } else {
+      genericError(dispatch, response);
+    }
+  }
+
   return <ModalStyled open={open} closeButton={() => setOpen(false)}>
     <Grid container spacing={3}>
       <Grid container item spacing={3} sm={12}>
         <Grid item sm={6}>
-          <SubTitle margin={'0 0 0 16px'}>Novo Projeto</SubTitle>
+          <SubTitle margin={'0 0 0 16px'}>Editar Projeto</SubTitle>
         </Grid>
       </Grid>
       <Grid container item spacing={3} sm={12}>
@@ -70,10 +81,13 @@ export const NewProject = ({open, setOpen}) => {
             {...{errors, setErrors, wasSubmitted}}
           >Nome do Projeto</InputStyled>
         </Grid>
-        <Grid container item sm={12}>
-          <Grid item sm={9}/>
+        <Grid container item spacing={3} sm={12}>
+          <Grid item sm={6}/>
           <Grid item sm={3}>
-            <ButtonStyled onClick={() => save()}>Cadastrar</ButtonStyled>
+            <ButtonStyled color={'error'} onClick={() => remove()}>Deletar</ButtonStyled>
+          </Grid>
+          <Grid item sm={3}>
+            <ButtonStyled onClick={() => save()}>Salvar</ButtonStyled>
           </Grid>
         </Grid>
       </Grid>

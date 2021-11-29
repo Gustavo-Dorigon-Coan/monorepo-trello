@@ -23,11 +23,11 @@ public class ProjectController {
     @GetMapping(value = "/user/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Project>> findByUserId(
-            @PathVariable("id") Long id){
+            @PathVariable("id") Long id) {
         return ResponseEntity.ok().body(projectService.findByUserId(id));
     }
 
-    @GetMapping(value = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Project> findById(
         @PathVariable("id") Long id) throws Exception {
@@ -38,19 +38,19 @@ public class ProjectController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-    public void save(@RequestBody Project project){
+    public void save(@RequestBody Project project) {
         projectService.save(project);
     }
 
     @PatchMapping(value = "/rename/{id}", consumes = MediaType.TEXT_PLAIN_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public void renameProject(@PathVariable("id") Long id,@RequestBody String name){
+    public void renameProject(@PathVariable("id") Long id, @RequestBody String name) {
         projectService.renameProject(id,name);
     }
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public void delete(@PathVariable("id")Long id){
+    public void delete(@PathVariable("id")Long id) {
         projectService.delete(id);
     }
   

@@ -19,7 +19,7 @@ class AuthService {
   };
 
   validateToken = () => {
-    const axiosConfig = {headers: {'content-type': 'text/plain'}};
+    const axiosConfig = {headers: {contentType: 'text/plain'}};
     return request.post(`/auth/validate-token`, `${instance.getToken()}`, axiosConfig);
   };
 

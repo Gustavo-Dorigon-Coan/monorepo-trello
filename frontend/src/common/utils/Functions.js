@@ -11,6 +11,12 @@ export const verifyErrors = errors => {
   return existsErrors;
 }
 
+export const horizontalScroll = (event, ctrlIsPressed) => {
+  if (ctrlIsPressed) {
+    const delta = Math.max(-2, Math.min(1, (event.nativeEvent.wheelDelta || -event.nativeEvent.detail)));
+    event.currentTarget.scrollLeft -= (delta * 10);
+  }
+}
 
 export const genericError = (dispatch, response) => {
   if (response === undefined) {

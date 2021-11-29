@@ -3,12 +3,11 @@ package com.unibave.monorepotrello.service;
 import com.unibave.monorepotrello.model.Card;
 import com.unibave.monorepotrello.model.ListOfCards;
 import com.unibave.monorepotrello.repository.CardRepository;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CardService {
@@ -25,22 +24,9 @@ public class CardService {
         cardRepository.save(card);
     }
 
-    public List<Card> findAll() {
-        return cardRepository.findAll();
-    }
-
     public void delete(Long id) {
         commentService.deleteAllByCardId(id);
         cardRepository.deleteById(id);
-    }
-
-    public void update(Long id, Card card) {
-        card.setId(id);
-        cardRepository.save(card);
-    }
-
-    public Optional<Card> findById(Long id) {
-        return cardRepository.findById(id);
     }
 
     @Transactional
@@ -57,7 +43,15 @@ public class CardService {
         }
     }
 
+    public void deleteByListOfCardsId(Long id) {
+        cardRepository.deleteByListOfCardsId(id);
+    }
+
     public List<Card> find(Long userId, LocalDate startDate, LocalDate endDate) {
         return cardRepository.find(userId,startDate,endDate);
+    }
+
+    public Card findById(Long id) {
+        return cardRepository.findById(id).get();
     }
 }

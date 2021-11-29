@@ -30,21 +30,14 @@ public class ProjectService {
         }
     }
 
-    public List<Project> findAll() {
-        return projectRepository.findAll();
-    }
-
+    @Transactional
     public void delete(Long id) {
-        projectRepository.deleteById(id);
+        listOfCardsService.deleteByProjectId(id);
+        projectRepository.deleteAllById(id);
     }
 
     public List<Project>findByUserId(Long id){
         return projectRepository.findByUsersId(id);
-    }
-
-    public void update(Long id, Project project) {
-        project.setId(id);
-        projectRepository.save(project);
     }
 
     public Optional<Project> findById(Long id) {
