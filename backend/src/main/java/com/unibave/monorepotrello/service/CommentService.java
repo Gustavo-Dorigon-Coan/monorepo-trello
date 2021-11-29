@@ -1,12 +1,9 @@
 package com.unibave.monorepotrello.service;
 
-import com.unibave.monorepotrello.model.Card;
 import com.unibave.monorepotrello.model.Comment;
-import com.unibave.monorepotrello.model.Project;
 import com.unibave.monorepotrello.repository.CommentRepository;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class CommentService {

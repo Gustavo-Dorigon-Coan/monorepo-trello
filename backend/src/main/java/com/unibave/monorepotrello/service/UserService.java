@@ -19,22 +19,4 @@ public class UserService {
     public void save(User user) {
         userRepository.save(user);
     }
-
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    public void delete(Long id) {
-        userRepository.deleteById(id);
-    }
-
-    public void update(Long id, User user) {
-        user.setId(id);
-        userRepository.save(user);
-    }
-
-    public Optional<User> findById(Long id) {
-        return userRepository.findById(id);
-    }
-    }
-
+}

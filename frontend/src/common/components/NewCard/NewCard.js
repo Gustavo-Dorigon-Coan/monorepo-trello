@@ -1,4 +1,4 @@
-import {Grid} from "@mui/material";
+import {Checkbox, FormControlLabel, Grid} from "@mui/material";
 import {InputStyled} from "../InputStyled/InputStyled";
 import {ButtonStyled} from "../Button/Button";
 import {SubTitle} from "../SubTitle/SubTitle";
@@ -11,6 +11,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {ALERT_TYPE} from "../../reducers/alertState";
 import {loadProject} from "../../../pages/Project/Project";
 import {NEW_CARD_TYPE} from "../../reducers/newCardState";
+import {loadProjects} from "../../../pages/Home/Projects/Projects";
 
 export const NewCard = () => {
   const [ errors, setErrors] = useState({title: true, description: true});
@@ -45,12 +46,13 @@ export const NewCard = () => {
     if (verifyErrors(errors)) {
       const response = await CardService.save(buildingCard);
       if (HttpStatus.isOkRange(response?.status)) {
-        closeAndClearState();
         loadProject(dispatch, projectId);
+        loadProjects(dispatch);
         dispatch({
           type: ALERT_TYPE,
           alert: {open: true, message: 'Tarefa registrada!', severity: 'success'},
         });
+        closeAndClearState();
       } else {
         genericError(dispatch, response);
       }
@@ -85,6 +87,18 @@ export const NewCard = () => {
             name={'description'}
             {...{errors, setErrors, wasSubmitted}}
           >Descrição</InputStyled>
+        </Grid>
+        <Grid item sm={2} display={'flex'} alignItems={'center'}>
+          Agendar:
+        </Grid>
+        <Grid item sm={10}>
+          <InputStyled
+            setObject={setBuildingCard}
+            object={buildingCard}
+            name={'scheduledDate'}
+            type={'date'}
+            {...{errors, setErrors, wasSubmitted}}
+          ></InputStyled>
         </Grid>
         <Grid container item sm={12}>
           <Grid item sm={9}/>

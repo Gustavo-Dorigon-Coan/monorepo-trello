@@ -35,7 +35,7 @@ export const Projects = () => {
         <Grid item sm={12}>
           <SubTitle>Projetos</SubTitle>
         </Grid>
-        {projects && projects.map(project => (
+        {projects && projects.filter(project => !project.inbox).map(project => (
           <Grid item>
             <CardProject project={project}/>
           </Grid>

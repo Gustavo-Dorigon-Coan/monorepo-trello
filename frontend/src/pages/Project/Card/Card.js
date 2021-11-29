@@ -5,6 +5,8 @@ import {loadProject} from "../Project";
 import {useDispatch, useSelector} from "react-redux";
 import {PROJECT_TYPE} from "../../../common/reducers/projectState";
 import {CardStyled, Description, Title} from "./styled";
+import {EDIT_CARD_TYPE} from "../../../common/reducers/EditCardState";
+import {loadProjects} from "../../Home/Projects/Projects";
 
 const Card = ({list, card}) => {
   const dispatch = useDispatch();
@@ -27,12 +29,22 @@ const Card = ({list, card}) => {
     if (HttpStatus.isOkRange(response?.status)) {
       dispatch({type: PROJECT_TYPE, actualListDropId: listDropId})
       loadProject(dispatch, id);
+      loadProjects(dispatch);
     }
+  }
+
+  const openCard = () => {
+    dispatch({
+      type: EDIT_CARD_TYPE,
+      card: {...card, listOfCards: {id: list.id}},
+      open: true,
+    })
   }
 
   return (
     <CardStyled
       draggable={true}
+      onClick={() => openCard()}
       onMouseMove={() => setActualListDropId(list.id)}
       onMouseDown={() => (mouseIsPressed = true)}
       onMouseUp={() => (mouseIsPressed = false)}

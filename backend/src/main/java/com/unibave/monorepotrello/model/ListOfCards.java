@@ -3,6 +3,7 @@ package com.unibave.monorepotrello.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;

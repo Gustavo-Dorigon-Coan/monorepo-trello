@@ -8,10 +8,11 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-
 public interface ProjectRepository extends JpaRepository<Project,Long> {
 
     List<Project> findByUsersId(Long id);
+
+    void deleteAllById(Long id);
 
     @Modifying
     @Query(value = "update project set name = :name where id = :id", nativeQuery = true)

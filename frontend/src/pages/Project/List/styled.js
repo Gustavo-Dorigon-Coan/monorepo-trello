@@ -24,7 +24,7 @@ export const Header = styled.div`
   flex-direction: row;
   padding: 4px;
   margin: 0;
-  border-bottom: 1px solid ${COLORS.Green};
+  border-bottom: 1px solid ${({color}) => color ? color : COLORS.Green};
   margin-bottom: 8px;
 `;
 
@@ -32,7 +32,7 @@ export const Title = styled.h3`
   font-size: 20px;
   width: 100%;
   font-weight: 500;
-  color: ${COLORS.Green};
+  color: ${({color}) => color ? color : COLORS.Green};
   margin: 8px 0;
 `;
 

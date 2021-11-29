@@ -1,8 +1,9 @@
 import {CircularProgress, Grid, Typography} from "@mui/material";
 import styled from "styled-components";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useHistory} from "react-router-dom";
 import {AuthService} from "../../services/AuthService";
+import {Modals} from "../../../modals";
 
 const PageWidth = styled.div`
   height: calc(100vh - 32px);
@@ -38,6 +39,7 @@ export const RestrictArea = ({children}) => {
 
   return Boolean(isLogged) && isLogged?.isLogged ? children : (
       <PageWidth>
+        <Modals />
         <Grid container direction="column" justify="flex-start" alignItems="center">
           <CircularProgress size={100} color={"secondary"}/>
           <Typography variant="h3" align="center" color="secondary">

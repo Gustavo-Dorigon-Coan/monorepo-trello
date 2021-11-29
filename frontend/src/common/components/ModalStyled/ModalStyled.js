@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {Button, Modal} from "@mui/material";
 import {COLORS} from "../../constants/Color";
 import CloseIcon from '@mui/icons-material/Close';
+import {useEffect} from "react";
 
 const ContainerModal = styled.div`
   min-width: ${({width}) => width ? width : '700px'};

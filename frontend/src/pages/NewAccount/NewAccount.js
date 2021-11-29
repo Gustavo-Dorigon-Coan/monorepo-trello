@@ -11,6 +11,7 @@ import {useHistory} from "react-router-dom";
 import {AppTitlePage} from "../../common/constants/Constants";
 import {useDispatch} from "react-redux";
 import {ALERT_TYPE} from "../../common/reducers/alertState";
+import {ProjectService} from "../../common/services/ProjectService";
 
 export const NewAccount = () => {
   const [ errors, setErrors] = useState({password: true, username: true, email: true});
@@ -25,7 +26,16 @@ export const NewAccount = () => {
     if (verifyErrors(errors)) {
       const response = await AuthService.save(user);
       if (HttpStatus.isOkRange(response?.status)) {
-        history.push('/');
+        const responseProject = await ProjectService.save({
+          users: [{id: AuthService.getUser().id}],
+          name: 'Caixa de Entrada',
+          inbox: true,
+          listOfCards: [{name: 'Tarefas', order: 0, color: '#53fd7e'}, {name: 'Concluído', order: 1, color: '#28ab26'}]})
+        if (HttpStatus.isOkRange(responseProject?.status)) {
+          history.push('/');
+        } else {
+          genericError(dispatch, responseProject);
+        }
       } else {
         genericError(dispatch, response);
       }

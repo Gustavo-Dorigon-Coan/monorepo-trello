@@ -1,6 +1,7 @@
 package com.unibave.monorepotrello.repository;
 
 import com.unibave.monorepotrello.model.ListOfCards;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -8,14 +9,20 @@ import org.springframework.data.repository.query.Param;
 
 public interface ListOfCardsRepository extends JpaRepository<ListOfCards, Long> {
 
+    @Query(value = "select max(list_of_cards.order_sequence) from list_of_cards where list_of_cards.project_id = :id", nativeQuery = true)
+    Integer getMaxOrderByProject(@Param("id") Long id);
+
+    List<ListOfCards> findByProjectId(Long id);
+
+    void deleteByProjectId(Long id);
+
     @Modifying
-    @Query(value = "update listOfCards set listOfCards.color = :color where listOfCards.id = :id", nativeQuery = true)
+    @Query(value = "update list_of_cards set color = :color where id = :id", nativeQuery = true)
     void changeColor(@Param("id") Long id, @Param("color") String color);
 
     @Modifying
-    @Query(value = "update listOfCards set listOfCards.order = :order where listOfCards.id = :id", nativeQuery = true)
-    void changeOrder(Long id, int order);
+    @Query(value = "update list_of_cards set order_sequence = :order where id = :id", nativeQuery = true)
+    void changeOrder(@Param("id") Long id, @Param("order") Integer order);
 
-    @Query(value = "select max(listOfCards.order) from listOfCards where listOfCards.project_id = :id", nativeQuery = true)
-    Integer getMaxOrderByProject(Long id);
+    List<ListOfCards> findAllByProjectId(Long id);
 }

@@ -14,11 +14,9 @@ const HttpMethods = {
 const executeRequest = (method, url, data, config) => {
   const authToken = AuthService.getToken();
   const instance = axios.create({
-    ...config,
     headers: {
-      'content-type': 'application/json',
+      'content-type': config?.headers?.contentType ? config?.headers?.contentType : 'application/json',
       'authorization': authToken && `Bearer ${authToken}`,
-      ...config?.headers
     }
   });
   instance.interceptors.response.use(
@@ -32,7 +30,7 @@ let methods = {
   get: url => executeRequest(HttpMethods.GET, url),
   post: (url, data, config) => executeRequest(HttpMethods.POST, url, data, config),
   put: (url, data) => executeRequest(HttpMethods.PUT, url, data),
-  patch: (url, data) => executeRequest(HttpMethods.PATCH, url, data),
+  patch: (url, data, config) => executeRequest(HttpMethods.PATCH, url, data, config),
   remove: url => executeRequest(HttpMethods.DELETE, url)
 };
 
