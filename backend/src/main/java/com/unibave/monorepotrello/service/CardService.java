@@ -6,6 +6,7 @@ import com.unibave.monorepotrello.repository.CardRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,9 +14,11 @@ import java.util.Optional;
 public class CardService {
 
     private final CardRepository cardRepository;
+    private final CommentService commentService;
 
-    public CardService(CardRepository cardRepository) {
+    public CardService(CardRepository cardRepository, CommentService commentService) {
         this.cardRepository = cardRepository;
+        this.commentService = commentService;
     }
 
     public void save(Card card) {
@@ -27,6 +30,7 @@ public class CardService {
     }
 
     public void delete(Long id) {
+        commentService.deleteAllByCardId(id);
         cardRepository.deleteById(id);
     }
 
@@ -51,5 +55,9 @@ public class CardService {
         } else {
             cardRepository.setDone(id,0);
         }
+    }
+
+    public List<Card> find(Long userId, LocalDate startDate, LocalDate endDate) {
+        return cardRepository.find(userId,startDate,endDate);
     }
 }

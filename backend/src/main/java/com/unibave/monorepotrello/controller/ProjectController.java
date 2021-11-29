@@ -2,7 +2,6 @@ package com.unibave.monorepotrello.controller;
 
 import com.unibave.monorepotrello.constant.ResourceName;
 import com.unibave.monorepotrello.model.Project;
-import com.unibave.monorepotrello.payload.response.MessageResponse;
 import com.unibave.monorepotrello.service.ProjectService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,6 +40,18 @@ public class ProjectController {
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody Project project){
         projectService.save(project);
+    }
+
+    @PatchMapping(value = "/rename/{id}", consumes = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public void renameProject(@PathVariable("id") Long id,@RequestBody String name){
+        projectService.renameProject(id,name);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id")Long id){
+        projectService.delete(id);
     }
   
 }

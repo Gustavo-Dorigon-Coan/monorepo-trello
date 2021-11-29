@@ -3,6 +3,9 @@ package com.unibave.monorepotrello.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity(name = "card")
@@ -24,6 +27,13 @@ public class Card {
     @ManyToOne
     @JoinColumn(name = "list_of_cards_id")
     private ListOfCards listOfCards;
+
+    @OneToMany(mappedBy = "card")
+    @JsonIgnoreProperties(value = {"comments"},allowSetters = true)
+    private List<Comment> comments;
+
+    @Column
+    private LocalDate scheduled_date;
 
     @Column
     private boolean done;
@@ -66,6 +76,22 @@ public class Card {
 
     public void setDone(boolean done) {
         this.done = done;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public LocalDate getScheduled_date() {
+        return scheduled_date;
+    }
+
+    public void setScheduled_date(LocalDate scheduled_date) {
+        this.scheduled_date = scheduled_date;
     }
 
     @Override

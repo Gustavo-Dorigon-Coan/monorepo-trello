@@ -32,7 +32,7 @@ public class ListOfCards {
     private String color;
 
     @Column(name = "order_sequence")
-    private int order;
+    private Integer order;
 
     public String getColor() {
         return color;
@@ -42,11 +42,11 @@ public class ListOfCards {
         this.color = color;
     }
 
-    public int getOrder() {
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(int order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 

@@ -23,17 +23,21 @@ public class ListOfCardsController {
         listOfCardsService.save(listOfCards);
     }
 
-    @PatchMapping(value = "/change_color/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping(value = "/change_color/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public void changeColor(@PathVariable("id") Long id, @RequestBody String color){
         listOfCardsService.changeColor(id, color);
     }
 
-    @PatchMapping(value = "/change_order/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PatchMapping(value = "/change_order/{id}",consumes = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
     public void changeOrder(@PathVariable("id") Long id, @RequestBody int order){
         listOfCardsService.changeOrder(id, order);
     }
 
-
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id")Long id){
+        listOfCardsService.delete(id);
+    }
 }

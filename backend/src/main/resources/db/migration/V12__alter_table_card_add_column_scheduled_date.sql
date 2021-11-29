@@ -1,0 +1,1 @@
+ALTER TABLE card ADD scheduled_date timestamp NULL;
