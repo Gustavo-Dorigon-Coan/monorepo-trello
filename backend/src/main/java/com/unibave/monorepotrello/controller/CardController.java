@@ -4,9 +4,14 @@ import com.unibave.monorepotrello.constant.ResourceName;
 import com.unibave.monorepotrello.model.Card;
 import com.unibave.monorepotrello.model.ListOfCards;
 import com.unibave.monorepotrello.service.CardService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDate;
+import java.util.List;
 
 
 @RestController
@@ -47,6 +52,15 @@ public class CardController {
     @ResponseStatus(HttpStatus.OK)
     public void update(@RequestBody Card card){
         cardService.save(card);
+    }
+
+    @GetMapping(value = "/user/{userId}/find")
+    @ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<List<Card>> find(
+            @PathVariable(value = "userId") Long userId,
+            @RequestParam(value = "startDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate startDate,
+            @RequestParam(value = "endDate") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate) {
+        return ResponseEntity.ok().body(cardService.find(userId,startDate,endDate));
     }
 }
 
