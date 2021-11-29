@@ -28,6 +28,10 @@ public class Card {
     @JoinColumn(name = "list_of_cards_id")
     private ListOfCards listOfCards;
 
+    @OneToMany(mappedBy = "card")
+    @JsonIgnoreProperties(value = {"comments"},allowSetters = true)
+    private List<Comment> comments;
+
     @Column
     private LocalDate scheduledDate;
 
