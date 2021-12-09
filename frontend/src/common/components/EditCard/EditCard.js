@@ -1,4 +1,4 @@
-import {Grid} from "@mui/material";
+import {Checkbox, FormControlLabel, Grid} from "@mui/material";
 import {InputStyled} from "../InputStyled/InputStyled";
 import {ButtonStyled} from "../Button/Button";
 import {SubTitle} from "../SubTitle/SubTitle";
@@ -13,6 +13,8 @@ import {loadProject} from "../../../pages/Project/Project";
 import {Comments, ContainerComments, ContainerDate} from "./styled";
 import {EDIT_CARD_TYPE} from "../../reducers/EditCardState";
 import {loadProjects} from "../../../pages/Home/Projects/Projects";
+import {ProjectService} from "../../services/ProjectService";
+import {PROJECT_TYPE} from "../../reducers/projectState";
 
 export const EditCard = () => {
   const [ errors, setErrors] = useState();
@@ -23,6 +25,7 @@ export const EditCard = () => {
   const [ comment, setComment ] = useState();
   const [ cardList, setCardList ] = useState();
   const [ cardProject, setCardProject ] = useState();
+  const [ isConcluded, setIsConcluded ] = useState(false);
   const [ comments, setComments ] = useState([]);
   const dispatch = useDispatch();
   const projectId = useSelector(store => store.projectState.id);
@@ -83,6 +86,7 @@ export const EditCard = () => {
       const response = await CardService.getList(card.id);
       if (HttpStatus.isOkRange(response?.status)) {
         setCardList(response?.data);
+        setIsConcluded(Boolean(response?.data) && response?.data?.name === 'Concluído');
       } else {
         genericError(dispatch, response);
       }
@@ -149,6 +153,20 @@ export const EditCard = () => {
     }
   }
 
+  const done = async () => {
+    const response = await ProjectService.findListConcludedById(cardProject?.id);
+    if (HttpStatus.isOkRange(response?.status)) {
+      const responseNextList = await CardService.setNextList(card.id, {id: response?.data});
+      if (HttpStatus.isOkRange(responseNextList?.status)) {
+        setIsConcluded(true);
+        loadProject(dispatch, cardProject?.id);
+        loadProjects(dispatch);
+      }
+    } else {
+      genericError(dispatch, response);
+    }
+  }
+
   return <ModalStyled open={open} closeButton={() => closeAndClearState()}>
     <Grid container spacing={3}>
       <Grid container item spacing={3} sm={12}>
@@ -186,7 +204,7 @@ export const EditCard = () => {
         <Grid item sm={2} display={'flex'} alignItems={'center'}>
           Agendar:
         </Grid>
-        <Grid item sm={10}>
+        <Grid item sm={7}>
           <InputStyled
             setObject={setNewCard}
             object={newCard}
@@ -195,6 +213,11 @@ export const EditCard = () => {
             type={'date'}
             {...{errors, setErrors, wasSubmitted}}
           ></InputStyled>
+        </Grid>
+        <Grid item sm={3} display={'flex'} justifyContent={'flex-end'} alignItems={'center'}>
+          <FormControlLabel control={
+            <Checkbox disabled={isConcluded} checked={isConcluded} onClick={() => done()} color={'success'} />
+          } label="Concluído" />
         </Grid>
         {Boolean(comments[0]) &&<Grid container display={'flex'} justifyContent={'center'} item sm={12}>
            <ContainerComments>

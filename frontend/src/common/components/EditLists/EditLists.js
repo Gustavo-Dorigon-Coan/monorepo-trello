@@ -15,6 +15,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import {ContainerLists} from "./styled";
 import CloseIcon from "@mui/icons-material/Close";
+import {loadProjects} from "../../../pages/Home/Projects/Projects";
 
 export const EditLists = () => {
   const dispatch = useDispatch();
@@ -85,6 +86,7 @@ export const EditLists = () => {
       if (HttpStatus.isOkRange(response?.status)) {
         loadLists();
         loadProject(dispatch, projectId);
+        loadProjects(dispatch);
       } else {
         genericError(dispatch, response);
       }

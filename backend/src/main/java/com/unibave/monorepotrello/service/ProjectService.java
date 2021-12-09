@@ -48,5 +48,9 @@ public class ProjectService {
     public void renameProject(Long id, String name){
         projectRepository.renameProject(id,name);
     }
+
+  public Long getListConcludedId(Long id) {
+        return projectRepository.getListConcludedId(id);
+  }
 }
 

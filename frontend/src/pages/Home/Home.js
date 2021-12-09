@@ -11,8 +11,8 @@ const Home = () => {
 
   return <RestrictArea>
     <Header/>
-    <ScheduledDays />
     <Projects/>
+    <ScheduledDays />
     <Inbox />
   </RestrictArea>;
 }

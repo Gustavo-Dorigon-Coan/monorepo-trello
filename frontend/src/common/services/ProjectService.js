@@ -20,6 +20,11 @@ class ProjectService {
   remove = id => {
     return request.remove(`/projects/${id}`);
   };
+
+  findListConcludedById = id => {
+    return request.get(`/projects/${id}/get_list_concluded_id`);
+  };
+
 }
 
 const instance = new ProjectService();

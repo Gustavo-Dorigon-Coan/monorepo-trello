@@ -5,7 +5,6 @@ import com.unibave.monorepotrello.model.ListOfCards;
 import com.unibave.monorepotrello.repository.CardRepository;
 import java.time.LocalDate;
 import java.util.List;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -43,7 +42,12 @@ public class CardService {
         }
     }
 
+    @Transactional
     public void deleteByListOfCardsId(Long id) {
+        List<Card> allByListOfCardsId = cardRepository.findAllByListOfCardsId(id);
+        allByListOfCardsId.forEach(card -> {
+            commentService.deleteAllByCardId(card.getId());
+        });
         cardRepository.deleteByListOfCardsId(id);
     }
 

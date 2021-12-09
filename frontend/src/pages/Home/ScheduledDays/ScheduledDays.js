@@ -87,7 +87,12 @@ export const ScheduledDays = () => {
     );
   }
 
-  return (
+  const showScheduledDays = () => {
+    return Boolean(cardsToday) && cardsToday.filter(card => card.list.name !== 'Concluído').length > 0 ||
+      Boolean(cardsWeek) && cardsWeek.filter(card => card.list.name !== 'Concluído').length > 0;
+  }
+
+  return showScheduledDays() && (
     <Container>
       <Grid container>
         <Grid item sm={6} display={'flex'} direction={'column'} alignItems={'center'}>
